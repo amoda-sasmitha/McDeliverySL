@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 import Auth from "./Auth";
+import Cart from "./Cart";
 
 const rehydrated = (state = false, action) => {
   switch (action.type) {
@@ -12,5 +13,6 @@ const rehydrated = (state = false, action) => {
 
 export default {
   rehydrated,
-  Auth,
+  Auth, 
+  Cart, 
 };

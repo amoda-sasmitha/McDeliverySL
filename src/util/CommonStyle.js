@@ -5,7 +5,12 @@ export default  StyleSheet.create({
     normalPage: {
       position: 'relative',
       flex: 1,
-      backgroundColor: colors.PrimaryDark,
+      backgroundColor: '#f5f5f5',
+    },
+    normalPage_white: {
+      position: 'relative',
+      flex: 1,
+      backgroundColor: '#ffffff',
     },
     card : {
         backgroundColor : '#ffffff' , 
@@ -39,5 +44,10 @@ export default  StyleSheet.create({
         paddingVertical : 8,
         borderColor : '#c9c9c9',
         borderBottomWidth : 0.33
-    }
+    },
+    item_icon : {
+        alignSelf : 'center', 
+        paddingTop : 8 ,
+        borderRadius : 4,
+    },
 });

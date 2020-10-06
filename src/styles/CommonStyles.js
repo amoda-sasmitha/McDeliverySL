@@ -3,7 +3,7 @@ import {
   Dimensions,
   Platform
 } from 'react-native';
-import { getStatusBarHeight } from 'react-native-status-bar-height';
+
 import {
   NAV_HEIGHT,
   TAB_HEIGHT,
@@ -18,7 +18,6 @@ import {
   fontSize
 } from './variables';
 
-const statusBarHeight =  ( Platform.OS == 'ios') ? getStatusBarHeight() : 0 ;
 
 // CommonStyles
 export default CommonStyles = StyleSheet.create({
@@ -26,21 +25,13 @@ export default CommonStyles = StyleSheet.create({
     position: 'relative',
     flex: 1,
     backgroundColor: colors.white,
-    ...Platform.select({
-      android: {
-        marginTop: statusBarHeight,
-      },
-    }),
+   
   },
   normalSinglePage: {
     flex: 1,
     height: deviceHeight,
     backgroundColor: colors.white,
-    ...Platform.select({
-      android: {
-        marginTop: statusBarHeight,
-      },
-    }),
+    
   },
   wrapperBox: {
     marginVertical: 15,

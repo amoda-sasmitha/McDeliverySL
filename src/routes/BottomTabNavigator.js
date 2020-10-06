@@ -3,39 +3,46 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome'
 import { createBottomTabNavigator  } from "@react-navigation/bottom-tabs";
 
 import { StyleSheet , Text} from "react-native";
+import { fonts} from '../util/fonts'
 
 import HomePage from "../screens/HomePage";
+import MenuPage from "../screens/MenuPage";
+
 
  const Tab = createBottomTabNavigator();
 
 const BottomNavigator = () => {
   return (
     <Tab.Navigator
-     style={{ padding : 20 }}
+     
       tabBarOptions={{
         activeTintColor : '#2D2D2D' , 
-        labelStyle: { fontSize : 10 , marginBottom : 5 , fontWeight : 'bold'},
+        labelStyle: { fontSize : 11.5 , marginBottom : 5 , fontFamily : fonts.medium},
+        style : {
+          height : 60,
+          backgroundColor: '#EFEFEF' 
+        }
       }}
     >
     <Tab.Screen name="Home" component={HomePage}
       options={{
         title : "Home",
         tabBarIcon :  ({ color }) => 
-        <Icon name="home" style={[styles.item_icon]}  size={24} color={color}/> ,
+        <Icon name="home" style={[styles.item_icon]}  size={27} color={color}/> ,
       }} 
     />
-    <Tab.Screen name="Menu" component={HomePage}
+    <Tab.Screen name="Menu" component={MenuPage}
       options={{
         title : "Menu",
         tabBarIcon :  ({ color }) => 
-        <Icon name="book" style={[styles.item_icon]}  size={20} color={color}/> ,
+        <Icon name="book" style={[styles.item_icon]}  size={23} color={color}/> ,
       }} 
     />
     <Tab.Screen name="Favourite" component={HomePage}
       options={{
         title : "Favourite",
         tabBarIcon :  ({ color }) => 
-        <Icon name="heart" style={[styles.item_icon]}  size={20} color={color}/> ,
+        <Icon name="heart" style={[styles.item_icon]}  size={23} color={color}/> ,
       }} 
     />
     
@@ -43,7 +50,7 @@ const BottomNavigator = () => {
       options={{
         title : "Track",
         tabBarIcon :  ({ color }) => 
-        <Icon name="truck" style={[styles.item_icon]}  size={22} color={color}/> ,
+        <Icon name="truck" style={[styles.item_icon]}  size={25} color={color}/> ,
       }} 
     />
 
@@ -51,7 +58,7 @@ const BottomNavigator = () => {
       options={{
         title : "More",
         tabBarIcon :  ({ color }) => 
-        <Icon name="list" style={[styles.item_icon]}  size={20} color={color}/> ,
+        <Icon name="list" style={[styles.item_icon]}  size={23} color={color}/> ,
       }} 
     />
     </Tab.Navigator>
