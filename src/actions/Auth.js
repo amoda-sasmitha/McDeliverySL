@@ -2,7 +2,7 @@ export const login = ( username , password ) => {
     return dispatch =>
       new Promise( (resolve, reject) => {
          
-                  if ( username == 'Admin' && password == "Admin"  ){
+                  if ( username == 'amoda29@gmail.com' && password == "Admin"  ){
            
                     dispatch({
                       type: "USER_DETAILS",
@@ -16,15 +16,10 @@ export const login = ( username , password ) => {
                       payload: true
                     });
 
-                    dispatch({
-                      type: "USER_ROLE",
-                      payload: 1
-                    });
-
                     return  resolve({ type : 'success' , message : "Successfully loged in" });
 
                     }else{
-                        return  resolve({ type : 'failed' , message : "Log in failed"  });
+                        return  reject({ type : 'failed' , message : "Log in failed"  });
                     }        
 
               }).catch( error => {

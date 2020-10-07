@@ -14,12 +14,12 @@ export default function DefaultHeader(props){
     return(
        <View>
            <View style={styles.default}>
-            <TouchableOpacity onPress={(props) => { navigation.goBack() }}>
+            { props.back && <TouchableOpacity onPress={(props) => { navigation.goBack() }}>
                 <View style={styles.cart_btn}>
                 <Icon name="angle-left"  size={30} color={colors.SecondaryDark }/> 
                 </View>
-            </TouchableOpacity>
-           <Text style={styles.title}>Shopping Cart</Text>
+            </TouchableOpacity>}
+            <Text style={styles.title}>{props.title}</Text>
             </View>
        </View>
     );

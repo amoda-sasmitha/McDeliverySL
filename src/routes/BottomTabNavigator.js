@@ -7,6 +7,7 @@ import { fonts} from '../util/fonts'
 
 import HomePage from "../screens/HomePage";
 import MenuPage from "../screens/MenuPage";
+import MainMenu from "../screens/MainMenu";
 
 
  const Tab = createBottomTabNavigator();
@@ -54,7 +55,7 @@ const BottomNavigator = () => {
       }} 
     />
 
-    <Tab.Screen name="More" component={HomePage}
+    <Tab.Screen name="More" component={MainMenu}
       options={{
         title : "More",
         tabBarIcon :  ({ color }) => 

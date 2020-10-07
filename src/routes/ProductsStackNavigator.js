@@ -1,17 +1,14 @@
 import React from "react";
 import { createStackNavigator , CardStyleInterpolators } from '@react-navigation/stack';
+
 import MenuPage from "../screens/MenuPage";
 import ShoppingCartPage from "../screens/ShoppingCartPage";
+import LoginPage from "../screens/LoginPage";
+import RegisterPage from "../screens/RegisterPage";
 import BottomTabNavigator from "./BottomTabNavigator";
+
 const Stack = createStackNavigator();
 
-// const fadeConfig = ({ current }) => {
-//     return {
-//         cardStyle: {
-//             opacity: current.progress,
-//         },
-//     }
-// };
 
 const ProductStackNavigator = () => {
   return (
@@ -24,6 +21,14 @@ const ProductStackNavigator = () => {
     options={{ cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS }}
     />
     <Stack.Screen name="ShoppingCart" component={ShoppingCartPage} 
+    options={{ cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS }}
+     />
+
+    <Stack.Screen name="Login" component={LoginPage} 
+    options={{ cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS }}
+     />
+
+    <Stack.Screen name="Register" component={RegisterPage} 
     options={{ cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS }}
      />
   </Stack.Navigator>

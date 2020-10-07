@@ -23,7 +23,7 @@ export default class ShoppingCartPage extends React.Component {
       const {active} = this.state;
         return (
           <View style={CommonStyles.normalPage_white}>
-            <DefaultHeader />
+            <DefaultHeader  title={'Shopping Cart'} back={true}/>
              <ScrollView>
                
                 { getCart(cart).map( (props,i) => <CartItem key={i} {...props} />) }

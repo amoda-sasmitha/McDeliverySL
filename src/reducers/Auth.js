@@ -3,7 +3,6 @@
     isAuthenticated: false,
     error: null,
     userDetails : null,
-    role : 0 ,
   };
   
   const initialState = { ...InitState };
@@ -14,8 +13,6 @@
         return { ...state, isAuthenticated: action.payload };
       case "USER_DETAILS":
         return { ...state, userDetails: action.payload };
-      case "USER_ROLE":
-        return { ...state, role: action.payload };
       case "RESET":
         return { ...state, ...InitState };
       default:

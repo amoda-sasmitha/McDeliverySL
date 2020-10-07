@@ -1,5 +1,6 @@
 import { colors } from './colors'
 import {  StyleSheet } from "react-native";
+import { fonts } from './fonts';
 
 export default  StyleSheet.create({
     normalPage: {
@@ -50,4 +51,24 @@ export default  StyleSheet.create({
         paddingTop : 8 ,
         borderRadius : 4,
     },
+
+    default_input : {
+        fontFamily : fonts.regular,
+        fontSize : 17,
+        color : colors.SecondaryDark ,
+        paddingHorizontal : 14 ,
+        paddingVertical : 8, 
+        flex : 1
+       
+    },
+
+    default_input_wrapper : {
+        borderColor : '#21212160',
+        borderWidth : 1.2,
+        marginTop : 14 ,
+        paddingHorizontal : 10 ,
+        marginHorizontal : 15 ,
+        flexDirection : 'row',
+        alignItems: 'center',
+    }
 });
