@@ -1,8 +1,8 @@
 // ./screens/About.js
 
 import React from "react";
-import { View , Text , StyleSheet , ScrollView  , Image , Alert , TouchableOpacity 
-  ,ToastAndroid , TextInput, Button ,  ActivityIndicator } from "react-native";
+import { View , Text , StyleSheet , ScrollView  , Image , Alert , TouchableOpacity , Dimensions
+  ,ToastAndroid , TextInput, Button ,  ActivityIndicator, ImageBackground } from "react-native";
 import CommonStyles from '../util/CommonStyle'
 import { fonts} from '../util/fonts'
 import Icon from 'react-native-vector-icons/dist/FontAwesome'
@@ -10,6 +10,9 @@ import { colors } from "../util/colors";
 import CommonStyle from "../util/CommonStyle";
 import { login} from '../actions/Auth'
 import { connect} from 'react-redux'
+import { showMessage } from "react-native-flash-message";
+
+const width = Dimensions.get('window').width;
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -38,7 +41,10 @@ class LoginPage extends React.Component {
     })
     .catch(err => {
       this.setState({login_loading : false})
-      ToastAndroid.show('Email or Password Wrong !' , 1000 );
+      showMessage({
+        message: "Please Enter Correct Email & Password !",
+        type: "danger",
+      });
     })
   }
 
@@ -107,6 +113,10 @@ class LoginPage extends React.Component {
                   </View>
 
               </View>
+
+              <Image source={require('../../assets/images/mask06.png')} 
+                resizeMode={'cover'}
+                style={styles.overlay}/>
           </View>
         );
     }
@@ -184,7 +194,16 @@ const styles = StyleSheet.create({
     borderWidth : 0.5 , 
     paddingVertical : 4,
     borderColor : colors.PrimaryDark,
-  
+},
+overlay : {
+  width : '100%' , 
+  position : 'absolute' , 
+  bottom : 0 ,
+  left : 0 ,
+  zIndex : -1 ,
+
+  height : '105%',
+  opacity : 1
 }
 });
 

@@ -36,7 +36,7 @@ class RegisterPage extends React.Component {
         errors.name = name.length == 0
         errors.email = email.length == 0
         errors.password = password.length == 0
-        errors.con_password = con_password.length == 0
+        errors.con_password = con_password.length == 0 
         errors.phone = phone.length == 0
 
         this.setState({errors : errors })
@@ -48,6 +48,11 @@ class RegisterPage extends React.Component {
                 type: "danger",
               });
         }
+    }else{
+        showMessage({
+            message: "Please Accept Privacy Policy !",
+            type: "danger",
+          });  
     }
 
   }
@@ -60,7 +65,7 @@ class RegisterPage extends React.Component {
             message: "Account Created Successfull !",
             type: "success",
           });
-        this.props.navigation.navigate("Login")
+        this.props.navigation.navigate("Activate")
     }, 1800)
   }
 
@@ -102,6 +107,7 @@ class RegisterPage extends React.Component {
                     onChangeText={(phone) =>this.setState({phone ,
                         errors : {...this.state.errors , phone : phone.length == 0 }})}
                     textContentType={'telephoneNumber'}
+                    keyboardType={'phone-pad'}
                     style={CommonStyle.default_input}
                     placeholder={'Mobile Number'}
                   ></TextInput>

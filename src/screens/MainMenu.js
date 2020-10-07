@@ -50,6 +50,17 @@ class MainMenu extends React.Component {
                 </TouchableOpacity>
                 }
 
+                {  !this.props.Auth.activated &&
+                <TouchableOpacity  onPress={() =>{
+                    this.props.navigation.navigate('Activate')
+                }} >
+                <View style={styles.sub_menu}>
+                    <Icon name="lock"  size={20} color={colors.LightGray }/> 
+                    <Text style={styles.sub_menu_text}>Activate Account</Text>
+                </View>
+                </TouchableOpacity>
+                }
+
                 { this.props.Auth.isAuthenticated && 
                 <TouchableOpacity  onPress={() =>{
                     this.props.logout && this.props.logout();
@@ -111,7 +122,7 @@ const styles = StyleSheet.create({
     },
     sub_menu: {
         marginHorizontal : 20 ,
-        paddingVertical : 16 ,
+        paddingVertical : 12 ,
         flexDirection : 'row',
         // borderBottomWidth : 1.5,
         // borderBottomColor : '#f4f4f4'

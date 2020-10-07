@@ -5,6 +5,7 @@ import MenuPage from "../screens/MenuPage";
 import ShoppingCartPage from "../screens/ShoppingCartPage";
 import LoginPage from "../screens/LoginPage";
 import RegisterPage from "../screens/RegisterPage";
+import ActivateAccountPage from "../screens/ActivateAccountPage";
 import BottomTabNavigator from "./BottomTabNavigator";
 
 const Stack = createStackNavigator();
@@ -29,6 +30,9 @@ const ProductStackNavigator = () => {
      />
 
     <Stack.Screen name="Register" component={RegisterPage} 
+    options={{ cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS }}
+     />
+    <Stack.Screen name="Activate" component={ActivateAccountPage} 
     options={{ cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS }}
      />
   </Stack.Navigator>
