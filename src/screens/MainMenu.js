@@ -50,7 +50,7 @@ class MainMenu extends React.Component {
                 </TouchableOpacity>
                 }
 
-                {  !this.props.Auth.activated &&
+                {/* {  !this.props.Auth.activated &&
                 <TouchableOpacity  onPress={() =>{
                     this.props.navigation.navigate('Activate')
                 }} >
@@ -59,7 +59,7 @@ class MainMenu extends React.Component {
                     <Text style={styles.sub_menu_text}>Activate Account</Text>
                 </View>
                 </TouchableOpacity>
-                }
+                } */}
 
                 { this.props.Auth.isAuthenticated && 
                 <TouchableOpacity  onPress={() =>{

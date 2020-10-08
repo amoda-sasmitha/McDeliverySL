@@ -9,7 +9,7 @@ import { fonts} from '../util/fonts'
 import Icon from 'react-native-vector-icons/dist/FontAwesome'
 import { colors } from "../util/colors";
 import { categories , products } from "../util/data";
-
+import Modal from 'react-native-modal';
 
 export default class MenuPage extends React.Component {
   constructor(props) {
@@ -30,10 +30,11 @@ export default class MenuPage extends React.Component {
                   { categories.map( (props,i) => <this.CategoryCard {...props} index={i}  key={i}/> ) }
                   </ScrollView>
                 </View>
-        <Text style={styles.current_category}>Main Menu</Text>
+              <Text style={styles.current_category}>Main Menu</Text>
                 { [...products , ...products].filter(i => i.category_id == active)
                 .map( (props,i) => <FoodItem key={i} {...props} />) }
              </ScrollView>
+             <this.Modal/>
           </View>
         );
     }
@@ -55,6 +56,14 @@ export default class MenuPage extends React.Component {
       </View>
       </TouchableOpacity>
     );
+
+    Modal = () => (
+        <Modal isVisible={false}>
+          <View style={{ flex: 1 }}>
+            <Text>I am the modal content!</Text>
+          </View>
+        </Modal>
+    )
     
 }
 

@@ -87,3 +87,19 @@ export const getCart = cart => {
 
     } , [])
 }
+
+export const getFav = fav => {
+  return fav.reduce( (acc,current) => {
+
+      const find = products.find( i => i.id == current)
+      if(find != undefined && find != null){
+      return [...acc , 
+      {
+        ...find
+      }]
+    }else{
+      return acc;
+    }
+
+  } , [])
+}

@@ -1,16 +1,17 @@
 // ./screens/About.js
 
 import React from "react";
-import { View , Text , StyleSheet , Image , Dimensions} from "react-native";
+import { View , Text , StyleSheet , Image , Dimensions , TouchableOpacity} from "react-native";
 import CommonStyles from '../util/CommonStyle'
-import Header from './Header'
+import Icon from 'react-native-vector-icons/FontAwesome'
 import { fonts} from '../util/fonts'
 import { colors } from "../util/colors";
-import { round } from "react-native-reanimated";
+
+
 
 const width = Dimensions.get('window').width;
 
-export default class CartItem extends React.Component {
+export default class FavItem extends React.Component {
   
     render(){
         return (
@@ -18,21 +19,25 @@ export default class CartItem extends React.Component {
         <View style={styles.food_card}>
             <View style={{flex : 4 , }}>
             <Image source={this.props.image} 
-            style={{width : 80 , height : 80 }}/>
+            style={{width : 75 , height : 75 }}/>
             </View>
             <View style={{flex : 8 , justifyContent : 'center' }}>
-                    <View style={{flexDirection : 'row' , }}>
+                    <View style={{flexDirection : 'row' }}>
                     <View>
-                        <Text style={styles.food_name}>{this.props.title}</Text>
-                        <Text style={styles.food_subtitle}>{this.props.subtitle}</Text>
+                    <Text style={styles.food_name}>{this.props.title}</Text>
+                    <Text style={styles.food_subtitle}>{this.props.subtitle}</Text>
                     </View>
-                    {/* <Icon  name="heart" size={20} color={'red'}/> */}
                     </View>
-                    <View style={{flexDirection : 'row' , paddingTop : 10 }}>
-                        <Text style={styles.price}>{`${this.props.qty} X LKR ${this.props.price}.00`}</Text>
-                        <Text style={styles.add_to_card}>-</Text>
-                        <Text style={styles.add_to_card}>+</Text>
+                    <View style={{flexDirection : 'row' , paddingTop : 10  }}>
+                        <Text style={styles.price}>{`LKR ${this.props.price}.00`}</Text>
+                        
                     </View>
+            </View>
+            <View style={{flex : 1 , justifyContent : 'center' }}>
+            <TouchableOpacity
+            onPress={() => this.props.OnPress(this.props.id)}>
+            <Icon style={{alignSelf : 'flex-start'}} name="heart-o" size={22} color={'#212121'}/>
+            </TouchableOpacity>
             </View>
         </View>
         </View>
@@ -65,9 +70,9 @@ const styles = StyleSheet.create({
     color : '#818181'
  },
  price : {
-  flex: 1,
   fontFamily : fonts.medium,
   fontSize : 16,
+  paddingRight : 10 ,
   color : '#383838',
   justifyContent: 'flex-start',
  },

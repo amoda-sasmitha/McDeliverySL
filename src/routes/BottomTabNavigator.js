@@ -8,6 +8,7 @@ import { fonts} from '../util/fonts'
 import HomePage from "../screens/HomePage";
 import MenuPage from "../screens/MenuPage";
 import MainMenu from "../screens/MainMenu";
+import FavouritePage from "../screens/FavouritePage";
 
 
  const Tab = createBottomTabNavigator();
@@ -22,10 +23,11 @@ const BottomNavigator = () => {
         style : {
           height : 60,
           backgroundColor: '#EFEFEF' 
-        }
+        },
       }}
     >
     <Tab.Screen name="Home" component={HomePage}
+      
       options={{
         title : "Home",
         tabBarIcon :  ({ color }) => 
@@ -39,7 +41,8 @@ const BottomNavigator = () => {
         <Icon name="book" style={[styles.item_icon]}  size={23} color={color}/> ,
       }} 
     />
-    <Tab.Screen name="Favourite" component={HomePage}
+    <Tab.Screen name="Favourite" component={FavouritePage}
+
       options={{
         title : "Favourite",
         tabBarIcon :  ({ color }) => 
