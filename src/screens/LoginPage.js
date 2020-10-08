@@ -114,9 +114,9 @@ class LoginPage extends React.Component {
 
               </View>
 
-              <Image source={require('../../assets/images/mask06.png')} 
+              {/* <Image source={require('../../assets/images/mask06.png')} 
                 resizeMode={'cover'}
-                style={styles.overlay}/>
+                style={styles.overlay}/> */}
           </View>
         );
     }
@@ -153,6 +153,7 @@ const styles = StyleSheet.create({
   },
   login_btn : {
     marginTop : 14 ,
+    borderRadius : 6 ,
     marginHorizontal : 15 , 
     paddingHorizontal : 10 ,
     paddingVertical : 10 ,

@@ -228,6 +228,7 @@ const styles = StyleSheet.create({
     letterSpacing : 1
   },
   login_btn : {
+    borderRadius : 6 ,
     marginTop : 14 ,
     marginHorizontal : 15 , 
     paddingHorizontal : 10 ,

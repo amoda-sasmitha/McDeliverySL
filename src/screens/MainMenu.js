@@ -71,13 +71,34 @@ class MainMenu extends React.Component {
                 </View>
                 </TouchableOpacity>
                 }
+
+                <TouchableOpacity  onPress={() =>{
+                    this.props.navigation.navigate('AddAddress')
+                }} >
+                <View style={styles.sub_menu}>
+                    <Icon name="map"  size={20} color={colors.LightGray }/> 
+                    <Text style={styles.sub_menu_text}>Add Address</Text>
+                </View>
+                </TouchableOpacity>
+
                 <View style={styles.menu}>
                     <Text style={styles.menu_text}>About</Text>
                 </View>
+
                 <View style={styles.sub_menu}>
                     <Icon name="user"  size={22} color={colors.LightGray }/> 
                     <Text style={styles.sub_menu_text}>About McDonals</Text>
                 </View>
+
+                <TouchableOpacity  onPress={() =>{
+                    this.props.navigation.navigate('Feedback')
+                }} >
+                <View style={styles.sub_menu}>
+                    <Icon name="pencil"  size={20} color={colors.LightGray }/> 
+                    <Text style={styles.sub_menu_text}>Customer Feedback</Text>
+                </View>
+                </TouchableOpacity>
+
                 <View style={styles.sub_menu}>
                     <Icon name="lock"  size={22} color={colors.LightGray }/> 
                     <Text style={styles.sub_menu_text}>Privacy Policies</Text>

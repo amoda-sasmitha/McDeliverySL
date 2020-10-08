@@ -6,6 +6,8 @@ import ShoppingCartPage from "../screens/ShoppingCartPage";
 import LoginPage from "../screens/LoginPage";
 import RegisterPage from "../screens/RegisterPage";
 import ActivateAccountPage from "../screens/ActivateAccountPage";
+import FeedbackPage from "../screens/FeedbackPage";
+import AddAddressPage from "../screens/AddAddressPage";
 import BottomTabNavigator from "./BottomTabNavigator";
 
 const Stack = createStackNavigator();
@@ -33,6 +35,12 @@ const ProductStackNavigator = () => {
     options={{ cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS }}
      />
     <Stack.Screen name="Activate" component={ActivateAccountPage} 
+    options={{ cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS }}
+     />
+    <Stack.Screen name="Feedback" component={FeedbackPage} 
+    options={{ cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS }}
+     />
+    <Stack.Screen name="AddAddress" component={AddAddressPage} 
     options={{ cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS }}
      />
   </Stack.Navigator>
