@@ -10,12 +10,18 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome'
 import { colors } from "../util/colors";
 import { categories , products } from "../util/data";
 import Modal from 'react-native-modal';
+import { connect} from 'react-redux'
+import { AddToCart} from '../actions/Other'
+import { showMessage } from "react-native-flash-message";
 
-export default class MenuPage extends React.Component {
+class MenuPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      active : 1
+      active : 1,
+      acitve_item : null,
+      is_visible : false,
+      qty : 1 ,
     }
     
   }
@@ -30,9 +36,13 @@ export default class MenuPage extends React.Component {
                   { categories.map( (props,i) => <this.CategoryCard {...props} index={i}  key={i}/> ) }
                   </ScrollView>
                 </View>
-              <Text style={styles.current_category}>Main Menu</Text>
-                { [...products , ...products].filter(i => i.category_id == active)
-                .map( (props,i) => <FoodItem key={i} {...props} />) }
+        <Text style={styles.current_category}>Main Menu</Text>
+                { [...products , ...products].filter(i => i.category_id == active).map( (props,i) => 
+                  <FoodItem 
+                    key={i} 
+                    {...props} 
+                    addtocart={this.OnClickAddToCart}
+                  />) }
              </ScrollView>
              <this.Modal/>
           </View>
@@ -58,14 +68,99 @@ export default class MenuPage extends React.Component {
     );
 
     Modal = () => (
-        <Modal isVisible={false}>
-          <View style={{ flex: 1 }}>
-            <Text>I am the modal content!</Text>
+        <Modal 
+
+          isVisible={this.state.is_visible} 
+          backdropOpacity={0.4}
+          onBackdropPress={() => this.setState({is_visible : false , acitve_item : null , qty : 1})}  
+        >
+          <View style={{ flex: 1 , justifyContent : 'center' }}>
+            <View style={styles.modal_wrapper}>
+              <View style={{justifyContent : 'center' }}>
+                      <View style={{flexDirection : 'row' , }}>
+                      <View>
+                          <Text style={styles.food_name}>{this.state.acitve_item && this.state.acitve_item.title}</Text>
+                          <Text style={styles.food_subtitle}>
+                          {this.state.acitve_item && this.state.acitve_item.subtitle}
+                          </Text>
+                      </View>
+                      </View>
+                      <View style={{flexDirection : 'row' , paddingTop : 10 }}>
+                          <TouchableOpacity activeOpacity={0.5}
+                                onPress={() => this.setState({qty : this.state.qty+ 1 }) }>
+                          <Text style={styles.btns}>+</Text>
+                          </TouchableOpacity>
+                          
+                          <Text style={styles.btns2}>{("0" + this.state.qty).slice(-2)}</Text>
+                          
+                          <TouchableOpacity activeOpacity={0.5}
+                                onPress={() => this.setState({qty : this.state.qty == 1 ? 1 : this.state.qty - 1 }) }>
+                          <Text style={styles.btns}>-</Text>
+                          </TouchableOpacity>
+                          
+                          <TouchableOpacity activeOpacity={0.5}
+                                onPress={this.submit}>
+                          <Text style={styles.add_to_card2}>Add to Cart</Text>
+                          </TouchableOpacity>
+                      </View>
+              </View>
+            </View>
           </View>
         </Modal>
     )
+
+    OnClickAddToCart = (id) => {
+      this.setState({
+        acitve_item : products.find( i => i.id == id ) ,
+         is_visible : true
+        })
+    }
+
+    submit = () => {
+        let cart  = this.props.Cart.items;
+        let item_id = this.state.acitve_item.id;
+        let qty = this.state.qty;
+        
+        let item_find = cart.find( i => i.id == item_id);
+        if(item_find == undefined){
+            cart = [...cart , { id : item_id , qty : qty}]
+        }else{
+          cart = cart.map( item => {
+            if(item.id == item_id){
+              return {
+                id : item_id,
+                qty : item_find.qty + qty
+              }
+            }else{
+              return item;
+            }
+          })
+        }
+
+        this.props.AddToCart(cart);
+        this.setState({is_visible : false , acitve_item : null , qty : 1});
+        showMessage({
+          message: 'Item Added Successfully !',
+          type: "success",
+          floating : true,
+          
+        });
+        this.props.navigation.navigate('ShoppingCart')
+
+
+    }
     
 }
+const mapDispatchToProps = {
+  AddToCart : AddToCart
+};
+
+const mapStateToProps = state => ({
+  Cart : state.Cart || {} ,
+});
+
+export default connect( mapStateToProps ,
+  mapDispatchToProps  )(MenuPage);
 
 
 
@@ -113,7 +208,68 @@ const styles = StyleSheet.create({
    paddingVertical : 5 ,
    backgroundColor : '#F5F5F5' , 
    color : colors.PrimaryDark
- }
+ },
+  modal_wrapper : {
+    backgroundColor : colors.White,
+    paddingVertical : 20 , 
+    paddingHorizontal : 15, 
+    borderRadius : 6,
+  },
+  food_name : {
+    fontFamily : fonts.medium,
+    fontSize : 15
+ },
+ food_subtitle : {
+   fontFamily : fonts.regular,
+   fontSize : 13,
+   color : '#818181'
+},
+add_to_card : {
+  fontFamily : fonts.medium,
+  fontSize : 12,
+  color : colors.White ,
+  backgroundColor : '#454545',
+  textAlignVertical : 'center',
+  paddingHorizontal : 14 ,
+  paddingVertical : 8 ,
+  marginLeft : 6 ,
+  borderRadius : 6 ,
+  justifyContent: 'flex-end',
+ },
+add_to_card2 : {
+  fontFamily : fonts.medium,
+  fontSize : 12,
+  color : colors.White ,
+  backgroundColor : '#F43E04',
+  textAlignVertical : 'center',
+  paddingHorizontal : 14 ,
+  paddingVertical : 8 ,
+  marginLeft : 6 ,
+  borderRadius : 6 ,
+  justifyContent: 'flex-end',
+ },
+ btns : {
+  fontFamily : fonts.medium,
+  fontSize : 15,
+  color : colors.White ,
+  backgroundColor : '#454545',
+  textAlignVertical : 'center',
+  paddingHorizontal : 14 ,
+  paddingVertical : 6 ,
+  borderRadius : 6 ,
+  justifyContent: 'flex-end',
+ },
+ btns2 : {
+  fontFamily : fonts.medium,
+  fontSize : 15,
+  color : colors.SecondaryDark ,
+  backgroundColor : colors.White,
+  textAlignVertical : 'center',
+  paddingHorizontal : 14 ,
+  paddingVertical : 6 ,
+  borderRadius : 6 ,
+  justifyContent: 'flex-end',
+ },
 
 });
 

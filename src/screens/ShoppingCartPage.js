@@ -9,9 +9,9 @@ import { fonts} from '../util/fonts'
 import Icon from 'react-native-vector-icons/dist/FontAwesome'
 import { colors } from "../util/colors";
 import {getCart} from '../util/data'
-
-
-export default class ShoppingCartPage extends React.Component {
+import { connect} from 'react-redux'
+import { AddToCart} from '../actions/Other'
+class ShoppingCartPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,22 +20,28 @@ export default class ShoppingCartPage extends React.Component {
     
   }
     render(){
-      const {active} = this.state;
         return (
           <View style={CommonStyles.normalPage_white}>
             <DefaultHeader  title={'Shopping Cart'} back={true}/>
              <ScrollView>
                
-                { getCart(cart).map( (props,i) => <CartItem key={i} {...props} />) }
+                { getCart(this.props.Cart.items).map( (props,i) => <CartItem key={i} {...props} />) }
              </ScrollView>
           </View>
         );
     }
-
-
-   
-    
 }
+
+const mapStateToProps = state => ({
+  Cart : state.Cart || {} ,
+});
+
+const mapDispatchToProps = {
+  AddToCart : AddToCart
+};
+
+
+export default connect( mapStateToProps , mapDispatchToProps )(ShoppingCartPage);
 
 const styles = StyleSheet.create({
    
@@ -51,9 +57,5 @@ const styles = StyleSheet.create({
 
 });
 
-const cart = [
-  { id : 2 , qty : 2},
-  { id : 1 , qty : 1}
-]
 
 

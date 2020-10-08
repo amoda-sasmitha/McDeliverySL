@@ -1,12 +1,14 @@
 // ./screens/About.js
 
 import React from "react";
-import { View , Text , StyleSheet , Image , Dimensions} from "react-native";
+import { View , Text , StyleSheet , Image , Dimensions , TouchableOpacity , Alert} from "react-native";
 import CommonStyles from '../util/CommonStyle'
 import Header from '../components/Header'
 import { fonts} from '../util/fonts'
 import { colors } from "../util/colors";
 import { round } from "react-native-reanimated";
+import { TouchableNativeFeedback } from "react-native-gesture-handler";
+
 
 const width = Dimensions.get('window').width;
 
@@ -30,7 +32,11 @@ export default class FoodItem extends React.Component {
                     </View>
                     <View style={{flexDirection : 'row' , paddingTop : 10 }}>
                         <Text style={styles.price}>{`LKR ${this.props.price}.00`}</Text>
-                        <Text style={styles.add_to_card}>Add to Cart</Text>
+                        <TouchableOpacity activeOpacity={0.5}
+                            onPress={() => this.props.addtocart(this.props.id)}
+                        >
+                            <Text style={styles.add_to_card}>Add to Cart</Text>
+                        </TouchableOpacity>
                     </View>
             </View>
         </View>
@@ -76,6 +82,7 @@ const styles = StyleSheet.create({
   backgroundColor : '#454545',
   textAlignVertical : 'center',
   paddingHorizontal : 10 ,
+  paddingVertical : 4,
   marginLeft : 6 ,
   borderRadius : 6 ,
   justifyContent: 'flex-end',

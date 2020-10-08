@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
  },
  add_to_card : {
   fontFamily : fonts.medium,
-  fontSize : 12,
+  fontSize : 15,
   color : colors.White ,
   backgroundColor : '#454545',
   textAlignVertical : 'center',
