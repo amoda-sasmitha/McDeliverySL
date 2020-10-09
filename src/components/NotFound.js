@@ -17,10 +17,10 @@ export default class NotFound extends React.Component {
         return (
        <View style={styles.wrapper}>
             <Image source={require('../../assets/images/icons/empty.png')} 
-            style={{width : 55 , height : 55 , tintColor : '#212121BF' , marginRight : 12  }}/>
+            style={{width : 55 , height : 55 , tintColor : colors.LightGray , marginRight : 15  }}/>
            <View>
-           <Text style={styles.title}>Sorry,</Text>
-           <Text style={styles.text}>{this.props.item}List is Empty !</Text>
+           <Text style={styles.title}>{this.props.title}</Text>
+           <Text style={styles.text}>{this.props.subtitle}</Text>
            </View>
        </View>
         );
@@ -32,20 +32,21 @@ export default class NotFound extends React.Component {
 
 const styles = StyleSheet.create({
     wrapper : {
+        justifyContent : 'center' , 
         flexDirection : 'row' , 
         borderColor : '#DDDDDD',
         borderWidth : 1,
         marginHorizontal : 12 , 
-        marginVertical : 12 ,
+        marginVertical : 15 ,
         borderRadius : 6 , 
         paddingHorizontal : 12 , 
-        paddingVertical : 20 ,
+        paddingVertical : 24 ,
     },
     text : {
         fontFamily : fonts.regular , 
         fontSize : 15.5 ,
         color : colors.LightGray,
-        lineHeight : 22
+        lineHeight : 25
     },
     title : {
         marginTop : 5 ,

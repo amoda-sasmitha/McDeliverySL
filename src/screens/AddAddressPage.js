@@ -36,7 +36,7 @@ class AddAddressPage extends React.Component {
         message: "Address Added Successfully !",
         type: "success",
       });
-      
+      this.props.navigation.goBack();
     } , 1500)
   }
 

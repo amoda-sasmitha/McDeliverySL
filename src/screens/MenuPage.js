@@ -5,6 +5,7 @@ import { View , Text , StyleSheet , ScrollView  , Image , Alert , TouchableOpaci
 import CommonStyles from '../util/CommonStyle'
 import Header from '../components/Header'
 import FoodItem from '../components/FoodItem'
+import NotFound from '../components/NotFound'
 import { fonts} from '../util/fonts'
 import Icon from 'react-native-vector-icons/dist/FontAwesome'
 import { colors } from "../util/colors";
@@ -13,6 +14,7 @@ import Modal from 'react-native-modal';
 import { connect} from 'react-redux'
 import { AddToCart} from '../actions/Other'
 import { showMessage } from "react-native-flash-message";
+import { sub } from "react-native-reanimated";
 
 class MenuPage extends React.Component {
   constructor(props) {
@@ -36,18 +38,26 @@ class MenuPage extends React.Component {
                   { categories.map( (props,i) => <this.CategoryCard {...props} index={i}  key={i}/> ) }
                   </ScrollView>
                 </View>
-        <Text style={styles.current_category}>Main Menu</Text>
+                <Text style={styles.current_category}>Main Menu</Text>
                 { [...products , ...products].filter(i => i.category_id == active).map( (props,i) => 
+                  
                   <FoodItem 
                     key={i} 
                     {...props} 
+                    navigation={this.props.navigation}
                     addtocart={this.OnClickAddToCart}
                   />) }
+
+                  { products.filter(i => i.category_id == active).length == 0 && 
+                    <NotFound title={categories.find(i => i.id == active).title} subtitle={ `Not Available Currently`}/>
+                  }
              </ScrollView>
              <this.Modal/>
           </View>
         );
     }
+
+    
 
 
     CategoryCard = (props) => (
@@ -69,7 +79,6 @@ class MenuPage extends React.Component {
 
     Modal = () => (
         <Modal 
-
           isVisible={this.state.is_visible} 
           backdropOpacity={0.4}
           onBackdropPress={() => this.setState({is_visible : false , acitve_item : null , qty : 1})}  
@@ -79,7 +88,7 @@ class MenuPage extends React.Component {
               <View style={{justifyContent : 'center' }}>
                       <View style={{flexDirection : 'row' , }}>
                       <View>
-                          <Text style={styles.food_name}>{this.state.acitve_item && this.state.acitve_item.title}</Text>
+                          <Text style={styles.food_name2}>{this.state.acitve_item && this.state.acitve_item.title}</Text>
                           <Text style={styles.food_subtitle}>
                           {this.state.acitve_item && this.state.acitve_item.subtitle}
                           </Text>
@@ -218,6 +227,10 @@ const styles = StyleSheet.create({
   food_name : {
     fontFamily : fonts.medium,
     fontSize : 15
+ },
+  food_name2 : {
+    fontFamily : fonts.medium,
+    fontSize : 17
  },
  food_subtitle : {
    fontFamily : fonts.regular,

@@ -16,7 +16,10 @@ export default class FoodItem extends React.Component {
   
     render(){
         return (
-       <View>
+       <TouchableOpacity 
+            activeOpacity={0.6}
+            onPress={() => this.props.navigation.navigate('Product',{id : this.props.id}) }
+       >
         <View style={styles.food_card}>
             <View style={{flex : 5 , }}>
             <Image source={this.props.image} 
@@ -42,7 +45,7 @@ export default class FoodItem extends React.Component {
         </View>
         <View style={styles.overlay}>
         </View>
-        </View>
+        </TouchableOpacity>
         );
     }
 }

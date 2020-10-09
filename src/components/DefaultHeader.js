@@ -20,6 +20,7 @@ export default function DefaultHeader(props){
                 </View>
             </TouchableOpacity>}
             <Text style={styles.title}>{props.title}</Text>
+           
             </View>
        </View>
     );

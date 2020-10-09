@@ -28,7 +28,7 @@ class FavouritePage extends React.Component {
               { getFav(Fav.items).map( (props,i) => <FavItem key={i} {...props}
                OnPress={(id) => { this.props.remove(id , Fav.items)}} /> )}
 
-                { (Fav.items && Fav.items.length == 0) ? <NotFound item={'Favourite '}/> 
+                { (Fav.items && Fav.items.length == 0) ? <NotFound subtitle={'Favourite List is Empty!'} title={`Let's Add Items`}/> 
                  :<TouchableOpacity 
                   activeOpacity={0.85}
                   onPress={this.props.clear}

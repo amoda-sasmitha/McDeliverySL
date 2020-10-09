@@ -103,3 +103,18 @@ export const getFav = fav => {
 
   } , [])
 }
+
+
+
+export const Total = cart => {
+  return cart.reduce( (acc,current) => {
+
+      const find = products.find( i => i.id == current.id)
+      if(find != undefined && find != null){
+      return acc + (current.qty * find.price)
+    }else{
+      return acc;
+    }
+
+  } , 0)
+}

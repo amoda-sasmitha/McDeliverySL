@@ -1,7 +1,7 @@
 // ./screens/About.js
 
 import React from "react";
-import { View , Text , StyleSheet , Image , Dimensions} from "react-native";
+import { View , Text , StyleSheet , Image , Dimensions, TouchableOpacity} from "react-native";
 import CommonStyles from '../util/CommonStyle'
 import Header from './Header'
 import { fonts} from '../util/fonts'
@@ -30,8 +30,16 @@ export default class CartItem extends React.Component {
                     </View>
                     <View style={{flexDirection : 'row' , paddingTop : 10 }}>
                         <Text style={styles.price}>{`${this.props.qty} X LKR ${this.props.price}.00`}</Text>
+                        <TouchableOpacity
+                            onPress={() => this.props.OnUpdate(this.props.id ,false)}
+                            activeOpacity={0.6}>
                         <Text style={styles.add_to_card}>-</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={() => this.props.OnUpdate(this.props.id , true)}
+                            activeOpacity={0.6}>
                         <Text style={styles.add_to_card}>+</Text>
+                        </TouchableOpacity>
                     </View>
             </View>
         </View>
