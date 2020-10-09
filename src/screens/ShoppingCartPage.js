@@ -60,7 +60,7 @@ class ShoppingCartPage extends React.Component {
               { this.props.Cart.items.length == 0 && <NotFound subtitle={'Shopping Cart is Empty !'} title={`Let's Add Items`}/>}
               { getCart(this.props.Cart.items).map( (props,i) => <CartItem key={i} {...props}  OnUpdate={this.onUpdate}/>) }
               </View>
-              { this.props.Cart.items.length > 1 &&
+              { this.props.Cart.items.length > 0 &&
                 <View>
                 <Text style={styles.total}>{`LKR ${Total(this.props.Cart.items)}.00`}</Text>
                 <View style={styles.hr}></View>
@@ -75,7 +75,7 @@ class ShoppingCartPage extends React.Component {
                 <TouchableOpacity 
                   activeOpacity={0.85}>
                 <View style={styles.login_btn}>
-                  <Text style={styles.login_btn_text}>PLACED ORDER</Text>
+                  <Text style={styles.login_btn_text}>PLACE ORDER</Text>
                 </View>
               </TouchableOpacity>
                 </View>

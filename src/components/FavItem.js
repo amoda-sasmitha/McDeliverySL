@@ -36,7 +36,8 @@ export default class FavItem extends React.Component {
             <View style={{flex : 1 , justifyContent : 'center' }}>
             <TouchableOpacity
             onPress={() => this.props.OnPress(this.props.id)}>
-            <Icon style={{alignSelf : 'flex-start'}} name="heart-o" size={22} color={'#212121'}/>
+           <Image source={require('../../assets/images/icons/remove_fav.png')}  resizeMode={'contain'}
+            style={{width : 25 , height : 25 , alignItems : 'flex-start' }}/>
             </TouchableOpacity>
             </View>
         </View>

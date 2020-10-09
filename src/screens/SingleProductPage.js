@@ -8,7 +8,7 @@ import CommonStyle from '../util/CommonStyle';
 import Icon from 'react-native-vector-icons/dist/FontAwesome'
 import { colors } from "../util/colors";
 import { connect} from 'react-redux'
-import { AddToCart} from '../actions/Other'
+import { AddToCart ,Update_FAV } from '../actions/Other'
 import { showMessage } from "react-native-flash-message";
 import { categories , products } from "../util/data";
 
@@ -26,11 +26,22 @@ class SingleProductPage extends React.Component {
     }
   }
 
+  is_fav = () => {
+    const {Fav} = this.props;
+    return Fav.items.some( i => i == this.state.id)
+  }
+
     render(){
         const { item } = this.state;
         return (
           <View style={CommonStyles.normalPage_white}>
-           <DefaultHeader  title={item.title} back={true}/>
+           <DefaultHeader  
+                leftIcon={
+                  <TouchableOpacity  onPress={this.addToFav} >
+                    <Icon size={22} color={'#CB3640'} name={this.is_fav() ? 'heart' : 'heart-o'}/>
+                  </TouchableOpacity>}
+                title={item.title} 
+                back={true}/>
                <ScrollView showsVerticalScrollIndicator={false}>
                     <View>
                     <Image source={item.image} 
@@ -87,7 +98,7 @@ class SingleProductPage extends React.Component {
                     </View>
                     <View >
                     </View>
-
+                        
                     </View>
                </ScrollView>
                 
@@ -125,13 +136,24 @@ class SingleProductPage extends React.Component {
         });
         this.props.navigation.navigate('ShoppingCart')
     }
+
+    addToFav = () => {
+      const {Fav} = this.props;
+      if( !this.is_fav()){
+        this.props.Update_FAV([...Fav.items , this.state.id])
+      }else{
+        this.props.Update_FAV(Fav.items.filter(i => i != this.state.id))
+      }
+    }
 }  
  const mapDispatchToProps = {
-    AddToCart : AddToCart
+    AddToCart : AddToCart,
+    Update_FAV : Update_FAV
   };
   
   const mapStateToProps = state => ({
     Cart : state.Cart || {} ,
+    Fav : state.Fav || {} ,
   });
   
   export default connect( mapStateToProps ,
@@ -226,5 +248,14 @@ c_card : {
     color : '#555555BF', 
     
   },
+  fav : {
+    marginHorizontal : 12 , 
+    marginVertical : 12 ,
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'absolute',
+    right: 0,
+    top : 0 ,
+  }
 });
   

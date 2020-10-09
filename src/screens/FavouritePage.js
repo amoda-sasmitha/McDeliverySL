@@ -25,8 +25,15 @@ class FavouritePage extends React.Component {
           <Header/>
             <ScrollView>
             <Text style={styles.current_category}>Favourites</Text>
-              { getFav(Fav.items).map( (props,i) => <FavItem key={i} {...props}
-               OnPress={(id) => { this.props.remove(id , Fav.items)}} /> )}
+              { getFav(Fav.items).map( (props,i) => 
+              
+              <TouchableOpacity 
+                onPress={() => this.props.navigation.navigate('Product',{id : props.id})}
+                key={i}  activeOpacity={0.5}>
+                <FavItem {...props}
+                OnPress={(id) => { this.props.remove(id , Fav.items)}} /> 
+              </TouchableOpacity>
+               )}
 
                 { (Fav.items && Fav.items.length == 0) ? <NotFound subtitle={'Favourite List is Empty!'} title={`Let's Add Items`}/> 
                  :<TouchableOpacity 

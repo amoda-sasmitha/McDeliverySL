@@ -20,7 +20,11 @@ export default function DefaultHeader(props){
                 </View>
             </TouchableOpacity>}
             <Text style={styles.title}>{props.title}</Text>
-           
+                {props.leftIcon && 
+                <View style={{justifyContent : 'center' , alignItems : 'flex-end' , flex : 1 }}>
+                    {props.leftIcon}
+                </View>
+                }
             </View>
        </View>
     );
