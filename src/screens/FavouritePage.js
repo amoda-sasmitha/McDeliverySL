@@ -23,7 +23,7 @@ class FavouritePage extends React.Component {
       return (
         <View style={CommonStyles.normalPage_white}>
           <Header/>
-            <ScrollView>
+            <ScrollView showsVerticalScrollIndicator={false}>
             <Text style={styles.current_category}>Favourites</Text>
               { getFav(Fav.items).map( (props,i) => 
               

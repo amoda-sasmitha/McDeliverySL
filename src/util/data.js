@@ -118,3 +118,25 @@ export const Total = cart => {
 
   } , 0)
 }
+
+export const orders = 
+  [
+    { id : 1001,
+      total : 3400.00,
+      date : '2020-10-10',
+      is_pending : true,
+      is_completed : false
+    },
+    { id : 1034,
+      total : 1500.00,
+      date : '2020-10-06',
+      is_pending : false,
+      is_completed : true
+    },
+    { id : 1067,
+      total : 850.00,
+      date : '2020-10-07',
+      is_pending : false,
+      is_completed : true
+    },
+  ]

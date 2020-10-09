@@ -6,10 +6,13 @@ import { colors } from '../util/colors'
 import CommonStyle from '../util/CommonStyle';
 import Icon from 'react-native-vector-icons/dist/FontAwesome'
 import { useNavigation } from '@react-navigation/native';
-
+import { fonts } from '../util/fonts';
+import {  useSelector } from "react-redux";
 export default function Card(props){
 
     const navigation = useNavigation();
+    const cart = useSelector(state => state.Cart.items);
+
     return(
        <View>
            <View style={{flexDirection : 'row' , marginTop : 15 , marginBottom : 5 ,paddingHorizontal : 12 ,}}>
@@ -25,6 +28,7 @@ export default function Card(props){
             }}>
                 <View style={styles.cart_btn}>
                 <Icon name="shopping-cart" style={CommonStyle.item_icon}  size={24} color={'#FFFFFF'}/> 
+                {/* <Text style={styles.nu}>{("0" + cart.length).slice(-2)}</Text> */}
                 </View>
             </TouchableOpacity>
             </View>
@@ -110,5 +114,17 @@ const styles = StyleSheet.create({
         borderColor: '#DDDDDD', 
         borderWidth: 1 ,
         borderRadius : 5 ,
+    },
+    nu : {
+        position : 'absolute' ,
+        top : 4 ,
+        paddingHorizontal : 2 ,
+        right : 4 ,
+        fontSize : 10 , 
+        fontFamily : fonts.semiBold , 
+        backgroundColor : colors.White ,
+        borderRadius : 10 , 
+        color : colors.PrimaryDark,
+        elevation : 20 ,
     }
 })

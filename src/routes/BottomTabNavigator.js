@@ -8,6 +8,7 @@ import { fonts} from '../util/fonts'
 import HomePage from "../screens/HomePage";
 import MenuPage from "../screens/MenuPage";
 import MainMenu from "../screens/MainMenu";
+import OrdersPage from "../screens/OrdersPage";
 import FavouritePage from "../screens/FavouritePage";
 
 
@@ -50,7 +51,7 @@ const BottomNavigator = () => {
       }} 
     />
     
-    <Tab.Screen name="Track" component={HomePage}
+    <Tab.Screen name="Track" component={OrdersPage}
       options={{
         title : "Track",
         tabBarIcon :  ({ color }) => 

@@ -10,6 +10,7 @@ import FeedbackPage from "../screens/FeedbackPage";
 import SingleProductPage from "../screens/SingleProductPage";
 import AddAddressPage from "../screens/AddAddressPage";
 import BottomTabNavigator from "./BottomTabNavigator";
+import TopTabNavigator from "./TopTabNavigator";
 
 const Stack = createStackNavigator();
 
@@ -45,6 +46,9 @@ const ProductStackNavigator = () => {
     options={{ cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS }}
      />
     <Stack.Screen name="Product" component={SingleProductPage} 
+    options={{ cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS }}
+     />
+    <Stack.Screen name="AddOrder" component={TopTabNavigator} 
     options={{ cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS }}
      />
   </Stack.Navigator>

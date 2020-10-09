@@ -73,6 +73,7 @@ class ShoppingCartPage extends React.Component {
                 <View style={styles.hr}></View>
 
                 <TouchableOpacity 
+                  onPress={() => this.props.navigation.navigate('AddOrder')}
                   activeOpacity={0.85}>
                 <View style={styles.login_btn}>
                   <Text style={styles.login_btn_text}>PLACE ORDER</Text>
