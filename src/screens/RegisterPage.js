@@ -77,7 +77,7 @@ class RegisterPage extends React.Component {
         return (
           <View style={CommonStyles.normalPage_white}>
               {/* <View style={styles.logo}>
-              <Image source={require('../../assets/images/icons/logo.jpg')} 
+              <Image source={require('../../assets/images/icons/logo.png')} 
                 style={{width : 80 , height : 80 }}/>
               </View> */}
                <DefaultHeader  title={'Create Account'} back={true}/>
