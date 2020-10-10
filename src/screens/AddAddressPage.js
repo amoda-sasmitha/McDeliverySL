@@ -110,7 +110,7 @@ class AddAddressPage extends React.Component {
           <TouchableOpacity 
             activeOpacity={0.85}
             style={styles.skip}
-            onPress={() => { this.props.navigation.navigate('Map')}}
+            onPress={() => { this.props.navigation.navigate('CurrentLocation')}}
           >
           <Text style={[styles.text_normal2 , { textAlign : 'center'}]}>Add Current Location</Text>
           </TouchableOpacity>

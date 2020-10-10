@@ -40,7 +40,7 @@ class OrderTrackPage extends React.Component {
     render(){
         return (
           <View style={CommonStyles.normalPage_white}>
-           <DefaultHeader  title={'Order Status'} back={true}/>
+           <DefaultHeader  title={'Order Track'} back={true}/>
            <View style={styles.cardtop}>
            <Text style={styles.food_name}>{`Estimated time ${moment(new Date()).add(15, 'minutes').format('LT') }`}</Text>
             <View style={{ flexDirection : 'row' }}>

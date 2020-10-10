@@ -10,6 +10,7 @@ import FeedbackPage from "../screens/FeedbackPage";
 import SingleProductPage from "../screens/SingleProductPage";
 import AddAddressPage from "../screens/AddAddressPage";
 import OrderTrackPage from "../screens/OrderTrackPage";
+import CurrentLocationPage from "../screens/CurrentLocationPage";
 import BottomTabNavigator from "./BottomTabNavigator";
 import TopTabNavigator from "./TopTabNavigator";
 
@@ -53,6 +54,9 @@ const ProductStackNavigator = () => {
     options={{ cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS }}
      />
     <Stack.Screen name="OrderTrack" component={OrderTrackPage} 
+    options={{ cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS }}
+     />
+    <Stack.Screen name="CurrentLocation" component={CurrentLocationPage} 
     options={{ cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS }}
      />
   </Stack.Navigator>
