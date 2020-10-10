@@ -9,6 +9,7 @@ import { fonts} from '../util/fonts'
 import CommonStyle from '../util/CommonStyle';
 import Icon from 'react-native-vector-icons/dist/FontAwesome'
 import { colors } from "../util/colors";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
@@ -53,14 +54,15 @@ export default class HomePage extends React.Component {
               sliderWidth={width-24}
               itemWidth={width - 24}
               inactiveSlideOpacity={0.95}
-              
-              // inactiveSlideShift={}
               autoplay={false}
               loop={true}
               autoplayInterval={3000}
             />
             </View>
             <View style={{marginTop : 15}}>
+              <TouchableOpacity 
+                onPress={() => this.props.navigation.navigate('Menu')}
+                activeOpacity={0.85}>
               <View style={styles.card}>
                 <View style={{flexDirection : 'row' , alignItems : 'center'}}>
                     <View style={styles.card_btn}>
@@ -73,7 +75,11 @@ export default class HomePage extends React.Component {
                     </View> 
                 </View>
               </View>
+              </TouchableOpacity>
 
+              <TouchableOpacity 
+                onPress={() => this.props.navigation.navigate('Promotions')}
+                activeOpacity={0.85}>
               <View style={styles.card}>
                 <View style={{flexDirection : 'row' , alignItems : 'center'}}>
                     <View style={styles.card_btn}>
@@ -82,10 +88,11 @@ export default class HomePage extends React.Component {
                     </View>
                     <View style={{paddingHorizontal : 15}}>
                       <Text style={styles.card_title}>{`Explore`}</Text>
-                    <Text style={styles.card_subtitle}>{`Our New Products`}</Text>  
+                    <Text style={styles.card_subtitle}>{`Our Promotions`}</Text>  
                     </View> 
                 </View>
               </View>
+              </TouchableOpacity>
             </View>
           </View>
         );
@@ -95,19 +102,22 @@ export default class HomePage extends React.Component {
 
 const data = [
   {
+    id : 1,
     image : require('../../assets/images/slide02.png') ,
     price : '780.00' ,
     title : 'Big Mac Meal'
   },
   {
+    id : 3,
     image : require('../../assets/images/slide03.png') ,
     price : '980.00' ,
-    title : 'Big Mac Meal'
+    title : 'Mac Wrap'
   },
   {
+    id : 2,
     image : require('../../assets/images/slide04.png') ,
-    price : '980.00' ,
-    title : 'Big Mac Meal'
+    price : '340.00' ,
+    title : 'Mac Fries'
   },
  
 ]
