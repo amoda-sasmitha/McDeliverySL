@@ -1,7 +1,7 @@
 import React from "react";
 import { createStackNavigator , CardStyleInterpolators } from '@react-navigation/stack';
-
 import MenuPage from "../screens/MenuPage";
+import SplashScreen from "../screens/SplashScreen";
 import ShoppingCartPage from "../screens/ShoppingCartPage";
 import LoginPage from "../screens/LoginPage";
 import RegisterPage from "../screens/RegisterPage";
@@ -22,10 +22,13 @@ const Stack = createStackNavigator();
 const ProductStackNavigator = () => {
   return (
     <Stack.Navigator 
-        initialRouteName={'Main'} 
+        initialRouteName={'Splash'} 
         headerMode={'none'}
         
     >
+    <Stack.Screen name="Splash" component={SplashScreen}
+    options={{ cardStyleInterpolator: CardStyleInterpolators.forFadeFromBottomAndroid }}
+    />
     <Stack.Screen name="Main" component={BottomTabNavigator}
     options={{ cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS }}
     />

@@ -1,7 +1,7 @@
 // ./screens/home.js
 
 import React from "react";
-import { View , Text  , ImageBackground , Dimensions ,Image , StyleSheet } from "react-native";
+import { View , Text  , ImageBackground , Dimensions ,Image , StyleSheet , BackHandler,} from "react-native";
 import CommonStyles from '../util/CommonStyle'
 import Header from '../components/Header'
 import Carousel from 'react-native-snap-carousel';
@@ -19,6 +19,25 @@ export default class HomePage extends React.Component {
     super(props);
     
   }
+
+  componentDidMount(){
+    BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this.handleBackButton);
+  }
+
+  handleBackButton = () => {
+    if (!this.props.navigation.isFocused()) {
+      return false;
+    }
+
+    if( this.props.route.name == 'Home'){
+      BackHandler.exitApp()
+      }
+   return true;
+    }
 
   
   _renderItem = ({item, index}) => {
