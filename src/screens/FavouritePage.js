@@ -82,6 +82,7 @@ const styles = StyleSheet.create({
   letterSpacing : 1
 },
 btn : {
+  borderRadius : 6 ,
   marginTop : 14 ,
   marginHorizontal : 15 , 
   paddingHorizontal : 10 ,

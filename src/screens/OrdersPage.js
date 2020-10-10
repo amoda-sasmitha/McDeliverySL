@@ -26,7 +26,7 @@ class OrdersPage extends React.Component {
           <View style={CommonStyles.normalPage_white}>
            <Header/>
            <ScrollView showsVerticalScrollIndicator={false}>
-                {orders.map( (order,i) => <OrderItem key={i} {...order}/>)}
+                {orders.map( (order,i) => <OrderItem key={i} {...order}  navigation={this.props.navigation}/>)}
             </ScrollView>
           </View>
         );

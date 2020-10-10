@@ -32,8 +32,15 @@ export default class FavItem extends React.Component {
                     <Text style={styles.food_subtitle}>{moment(this.props.date, 'YYYY-MM-DD').format('MMMM Do YYYY')}</Text>
                     </View>
                         <View>
-                        { this.props.is_completed && <Text style={styles.more}>More Details</Text>}
-                        { !this.props.is_completed && <Text style={styles.more} >Track Order</Text>}
+                        { this.props.is_completed && <Text style={styles.more1}>Completed</Text>}
+                        { !this.props.is_completed && 
+                          <TouchableOpacity 
+                            activeOpacity={0.4}
+                            onPress={() => this.props.navigation.navigate('OrderTrack')}
+                          >
+                          <Text style={styles.more} >Track Order</Text>
+                          </TouchableOpacity>
+                        }
                         </View>
                     </View>
                     <View style={{flexDirection : 'row' , paddingTop : 10  }}>
@@ -73,11 +80,21 @@ const styles = StyleSheet.create({
     borderRadius : 10,
     padding : 4,
   },
-   more : {
+   more1 : {
+
     borderColor : colors.SecondaryDark,
     color : colors.SecondaryDark,
     borderWidth : 0.5,
-    fontSize : fonts.semiBold ,
+    fontFamily : fonts.medium ,
+    fontSize : 12, 
+    borderRadius : 4,
+    paddingHorizontal : 8 ,
+    paddingVertical : 4 ,
+  },
+   more : {
+    backgroundColor : colors.SecondaryDark,
+    color : colors.White,
+    fontFamily : fonts.semiBold ,
     fontSize : 12, 
     borderRadius : 4,
     paddingHorizontal : 8 ,

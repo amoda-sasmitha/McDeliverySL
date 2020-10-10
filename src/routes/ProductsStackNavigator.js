@@ -9,6 +9,7 @@ import ActivateAccountPage from "../screens/ActivateAccountPage";
 import FeedbackPage from "../screens/FeedbackPage";
 import SingleProductPage from "../screens/SingleProductPage";
 import AddAddressPage from "../screens/AddAddressPage";
+import OrderTrackPage from "../screens/OrderTrackPage";
 import BottomTabNavigator from "./BottomTabNavigator";
 import TopTabNavigator from "./TopTabNavigator";
 
@@ -49,6 +50,9 @@ const ProductStackNavigator = () => {
     options={{ cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS }}
      />
     <Stack.Screen name="AddOrder" component={TopTabNavigator} 
+    options={{ cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS }}
+     />
+    <Stack.Screen name="OrderTrack" component={OrderTrackPage} 
     options={{ cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS }}
      />
   </Stack.Navigator>
