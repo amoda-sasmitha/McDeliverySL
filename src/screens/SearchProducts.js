@@ -1,7 +1,7 @@
 // ./screens/About.js
 
 import React from "react";
-import { View , Text , StyleSheet , ScrollView  , Image , Alert , TouchableOpacity} from "react-native";
+import { View , Text , StyleSheet , ScrollView  , Image , Alert , TextInput , TouchableOpacity} from "react-native";
 import CommonStyles from '../util/CommonStyle'
 import Header from '../components/Header'
 import FoodItem from '../components/FoodItem'
@@ -16,30 +16,33 @@ import { AddToCart} from '../actions/Other'
 import { showMessage } from "react-native-flash-message";
 import { sub } from "react-native-reanimated";
 
-class MenuPage extends React.Component {
+class SearchProducts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      active : 1,
       acitve_item : null,
       is_visible : false,
       qty : 1 ,
+      search : ''
     }
     
   }
     render(){
-      const {active} = this.state;
+     
         return (
           <View style={CommonStyles.normalPage_white}>
-            <Header/>
+            <View  style={styles.search_wrapper}>
+            <Icon style={styles.searchIcon} name="search" size={20} color={'#D7D7D7'}/>
+            <TextInput
+                 value={this.state.search}
+                 onChangeText={(search) =>this.setState({search})}
+                autoFocus={true}
+                style={styles.input}
+                placeholder={'Search Burgers...'}
+                />
+            </View>
              <ScrollView showsVerticalScrollIndicator={false}>
-                <View style={{marginTop : 10}}>
-                  <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} >
-                  { categories.map( (props,i) => <this.CategoryCard {...props} index={i}  key={i}/> ) }
-                  </ScrollView>
-                </View>
-                <Text style={styles.current_category}>Main Menu</Text>
-                { products.filter(i => i.category_id == active).map( (props,i) => 
+                { this.find().map( (props,i) => 
                   
                   <FoodItem 
                     key={i} 
@@ -48,34 +51,20 @@ class MenuPage extends React.Component {
                     addtocart={this.OnClickAddToCart}
                   />) }
 
-                  { products.filter(i => i.category_id == active).length == 0 && 
-                    <NotFound title={categories.find(i => i.id == active).title} subtitle={ `Not Available Currently`}/>
-                  }
              </ScrollView>
              <this.Modal/>
           </View>
         );
     }
 
-    
+    find = () => {
+        const { search} = this.state;
+        if(search.length > 2 ){
+            return products.filter( p => p.title.includes(search))
+        }
 
-
-    CategoryCard = (props) => (
-      <TouchableOpacity
-        key={props.id}
-        activeOpacity={0.9}
-        onPress={() => this.setState({active : props.id}) }
-      >
-      <View >
-        <View  style={[(props.id == this.state.active) ? styles.c_card_active : styles.c_card  ,
-           {marginLeft : (props.index == 0) ? 12 : 0}]}>
-        <Image source={props.image} 
-          style={{width : 40 , height : 40 , tintColor : (props.id == this.state.active) ? '#FFFFFF' : '#979797'}}/>
-        </View>
-        <Text style={(props.id == this.state.active) ? styles.c_text_active : styles.c_text}>{props.title}</Text>
-      </View>
-      </TouchableOpacity>
-    );
+        return [];
+    }
 
     Modal = () => (
         <Modal 
@@ -169,7 +158,7 @@ const mapStateToProps = state => ({
 });
 
 export default connect( mapStateToProps ,
-  mapDispatchToProps  )(MenuPage);
+  mapDispatchToProps  )(SearchProducts);
 
 
 
@@ -189,13 +178,11 @@ const styles = StyleSheet.create({
   c_text_active : {
     fontSize : 13 ,
     paddingTop : 3 ,  
-    marginRight : 8 ,
     fontFamily : fonts.semiBold,
     textAlign : 'center',
     color : '#555555', 
   },
   c_text : {
-    marginRight : 8 ,
     fontSize : 13 ,
     paddingTop : 3 ,  
     fontFamily : fonts.medium,
@@ -285,6 +272,31 @@ add_to_card2 : {
   borderRadius : 6 ,
   justifyContent: 'flex-end',
  },
+ search_wrapper : {
+     marginHorizontal : 12 , 
+     marginTop : 15 ,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    borderColor: '#DDDDDD', 
+    borderWidth: 1 ,
+    borderRadius : 5 ,
+},
+searchIcon: {
+    padding: 10,
+},
+input: {
+    flex : 1 ,
+    paddingRight: 10,
+    paddingBottom: 10,
+    paddingLeft: 0,
+    fontSize : 15,
+    fontFamily: "Poppins-Medium",
+    height : 40 ,
+    backgroundColor: '#fff',
+    color: '#424242',
+},
 
 });
 

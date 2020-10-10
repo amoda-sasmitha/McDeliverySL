@@ -31,7 +31,47 @@ export const products = [
       title : 'Mc Rice Meal',
       subtitle : '+ coca cola',
       price : 670.00 , 
+      category_id : 1
+    },
+    {
+      id : 5 ,
+      image : require('../../assets/images/products/food07.png'),
+      title : 'Mc Happy Meal',
+      subtitle : '+6 chicken nuggets',
+      price : 750.00 , 
+      category_id : 1
+    },
+    {
+      id : 6 ,
+      image : require('../../assets/images/products/food08.png'),
+      title : 'Fries Large',
+      subtitle : 'with extra 100g',
+      price : 300.00 , 
       category_id : 2
+    },
+    {
+      id : 7 ,
+      image : require('../../assets/images/products/food13.png'),
+      title : 'Coca Cola',
+      subtitle : '300ML',
+      price : 350.00 , 
+      category_id : 3
+    },
+    {
+      id : 8 ,
+      image : require('../../assets/images/products/food12.png'),
+      title : 'Pepsi Cola',
+      subtitle : '300ML',
+      price : 350.00 , 
+      category_id : 3
+    },
+    {
+      id : 9 ,
+      image : require('../../assets/images/products/food11.png'),
+      title : 'Chocalate Milkshake',
+      subtitle : '300ML',
+      price : 650.00 , 
+      category_id : 3
     }
   ]
 
@@ -49,23 +89,23 @@ export const categories =
     },
     {
       id : 3 ,
-      image : require('../../assets/images/icons/category03.png'),
-      title : 'Desserts'
+      image : require('../../assets/images/icons/category04.png'),
+      title : 'Beverages'
     },
     {
       id : 4 ,
-      image : require('../../assets/images/icons/category04.png'),
-      title : 'Beverages'
-    },
-    {
-      id : 5 ,
       image : require('../../assets/images/icons/category03.png'),
       title : 'Desserts'
     },
     {
+      id : 5 ,
+      image : require('../../assets/images/icons/category06.png'),
+      title : 'Pizza'
+    },
+    {
       id : 6 ,
-      image : require('../../assets/images/icons/category04.png'),
-      title : 'Beverages'
+      image : require('../../assets/images/icons/category07.png'),
+      title : 'Snacks'
     },
     
   ]

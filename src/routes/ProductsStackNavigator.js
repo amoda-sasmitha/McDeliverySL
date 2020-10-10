@@ -11,6 +11,7 @@ import SingleProductPage from "../screens/SingleProductPage";
 import AddAddressPage from "../screens/AddAddressPage";
 import OrderTrackPage from "../screens/OrderTrackPage";
 import PromotionsPage from "../screens/PromotionsPage";
+import SearchProducts from "../screens/SearchProducts";
 import CurrentLocationPage from "../screens/CurrentLocationPage";
 import BottomTabNavigator from "./BottomTabNavigator";
 import TopTabNavigator from "./TopTabNavigator";
@@ -61,6 +62,9 @@ const ProductStackNavigator = () => {
     options={{ cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS }}
      />
     <Stack.Screen name="Promotions" component={PromotionsPage} 
+    options={{ cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS }}
+     />
+    <Stack.Screen name="Search" component={SearchProducts} 
     options={{ cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS }}
      />
   </Stack.Navigator>

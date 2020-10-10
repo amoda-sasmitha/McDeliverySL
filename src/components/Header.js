@@ -18,10 +18,13 @@ export default function Card(props){
            <View style={{flexDirection : 'row' , marginTop : 15 , marginBottom : 5 ,paddingHorizontal : 12 ,}}>
             <View  style={styles.search_wrapper}>
             <Icon style={styles.searchIcon} name="search" size={20} color={'#D7D7D7'}/>
-            <TextInput
+            <TouchableOpacity  style={{  marginTop : 2 }} onPress={(props) => {
+            navigation.navigate('Search')
+            }}>
+            <Text
                 style={styles.input}
-                placeholder={'Search Burgers...'}
-                />
+                >Search Burgers..</Text>
+            </TouchableOpacity>
             </View>
             <TouchableOpacity onPress={(props) => {
             navigation.navigate('ShoppingCart')
@@ -88,15 +91,15 @@ const styles = StyleSheet.create({
         flex : 1
     },
     input: {
-        flex: 1,
+       
         paddingRight: 10,
-        paddingBottom: 10,
+        paddingVertical: 7,
         paddingLeft: 0,
         fontSize : 15,
         fontFamily: "Poppins-Medium",
         height : 40 ,
         backgroundColor: '#fff',
-        color: '#424242',
+        color: '#42424280',
     },
     cart_btn : {
         paddingHorizontal : 10 ,
@@ -108,8 +111,8 @@ const styles = StyleSheet.create({
     search_wrapper : {
         flex: 1,
         flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
+        // justifyContent: 'center',
+        // alignItems: 'center',
         backgroundColor: '#fff',
         borderColor: '#DDDDDD', 
         borderWidth: 1 ,
